@@ -11,16 +11,15 @@
 // Используя шаблонную строку выведи в консоль информацию о товаре,
 // получится: 'Выбран «Генератор защитного поля», цена за штуку 2000 кредитов'.
 
-// let name = "Генератор защитного поля";
-// let price = 1000;
+let name = "Генератор защитного поля";
+let price = 1000;
 
-// let lineOut = `Выбран ${name}, цена за штуку ${price} кредитов`;
+let lineOut = `Выбран ${name}, цена за штуку ${price} кредитов`;
 
-// console.log(lineOut);
+console.log(lineOut);
 
-// price = 2000;
+price = 2000;
 
-// lineOut = `Выбран ${name}, цена за штуку ${price} кредитов`;
+lineOut = `Выбран ${name}, цена за штуку ${price} кредитов`;
 
-// console.log(lineOut);
-
+console.log(lineOut);

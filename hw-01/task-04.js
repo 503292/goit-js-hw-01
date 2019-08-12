@@ -25,13 +25,13 @@ let convertString = Number.parseInt(pcs);
 
 let totalPrice = pcs * pricePerDroid;
 
-if (pcs === null ) {
+if (pcs === null) {
   message = "Отменено пользователем!";
 } else if (credit < totalPrice) {
   message = "Недостаточно средств на счету!";
-}else  {
-    message = `Вы купили ${pcs} дроидов, на счету осталось ${credit - totalPrice} кредитов.`;
+} else {
+  message = `Вы купили ${pcs} дроидов, на счету осталось ${credit -
+    totalPrice} кредитов.`;
 }
 
 alert(message);
-

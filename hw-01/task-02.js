@@ -16,4 +16,3 @@ if (ordered >= total) {
 } else {
   console.log("Заказ оформлен, с вами свяжется менеджер");
 }
-

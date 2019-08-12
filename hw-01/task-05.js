@@ -24,27 +24,26 @@ let counryLower = countryDelivery.toLowerCase();
 switch (counryLower) {
   case "китай":
     price = 100;
-    country = "Китай"
+    country = "Китай";
     break;
   case "чілі":
     price = 250;
-    country = "Чілі"
+    country = "Чілі";
     break;
   case "австралія":
     price = 170;
-    country = "Австралія"
+    country = "Австралія";
     break;
   case "індія":
     price = 80;
-    country = "Індія"
+    country = "Індія";
     break;
   case "ямайка":
     price = 120;
-    country = "Ямайка"
+    country = "Ямайка";
     break;
   default:
     alert("В вашей стране доставка не доступна");
 }
 
-alert(`Доставка в ${country} будет стоить ${price} кредитов`)
-
+alert(`Доставка в ${country} будет стоить ${price} кредитов`);
