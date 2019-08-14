@@ -13,18 +13,17 @@
 // при этом результат prompt плюсовать к общей сумме не нужно,
 // после чего снова пользователю предлагается ввести число в prompt.
 
-let input;
+let input = prompt("Введіть число: ");
 let total = 0;
-let isOut = true;
-do {
-  input = prompt("Enter number to plus: ");
 
-  if (input !== null) {
-    input = Number.parseInt(input);
-    total = total + input;
+while (input !== null) {
+  if (isNaN(input)) {
+    alert('Введено не число спробуйте ще раз: ');
+    input = prompt("Введіть число: ");
   } else {
-    isOut = false;
+    total += Number(input);
+    input = prompt("Введіть число: ");
   }
-} while (isOut);
+}
 
 alert(`Общая сумма чисел равна ${total}`);
