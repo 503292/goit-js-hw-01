@@ -1,19 +1,29 @@
 "use strict";
 
 // Задание 6
-// Напиши функцию calculateTotalPrice(arr, productName), 
-// которая получает массив объектов и имя продукта (значение свойства name). 
+// Напиши функцию calculateTotalPrice(arr, productName),
+// которая получает массив объектов и имя продукта (значение свойства name).
 // Возвращает общую стоимость продукта (цена * количество).
 
 // Вызовы функции для проверки работоспособности твоей реализации.
 
+const calculateTotalPrice = (products, productName) => {
+  for (let product of products) {
+    if (product.name === productName) {
+      return product.price * product.quantity;
+    }
+  }
+};
+
 const products = [
-  { name: 'Радар', price: 1300, quantity: 4 },
-  { name: 'Сканер', price: 2700, quantity: 3 },
-  { name: 'Дроид', price: 400, quantity: 7 },
-  { name: 'Захват', price: 1200, quantity: 2 },
+  { name: "Радар", price: 1300, quantity: 4 },
+  { name: "Сканер", price: 2700, quantity: 3 },
+  { name: "Дроид", price: 400, quantity: 7 },
+  { name: "Захват", price: 1200, quantity: 2 }
 ];
 
-console.log(calculateTotalPrice(products, 'Радар')); // 5200
+console.log(calculateTotalPrice(products, "Радар")); // 5200
 
-console.log(calculateTotalPrice(products, 'Дроид')); // 2800
+console.log(calculateTotalPrice(products, "Дроид")); // 2800
+
+//DONE
