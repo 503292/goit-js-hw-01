@@ -25,8 +25,8 @@ console.log(users); //  ["Lux", "Poly", "Ajax", "Jay", "Kiwi"]
 const userToDelete = "Ajax";
 let indexUser = users.indexOf(userToDelete);
 console.log(indexUser); // 2
-console.log(users.splice(indexUser, 1)); //  ["Lux", "Poly", "Jay", "Kiwi"]
-console.log(users);
+// console.log(users.splice(indexUser, 1)); 
+console.log(users);//  ["Lux", "Poly", "Jay", "Kiwi"]
 
 // Добавить в массив пользователя хранящегося в переменной userToInsert,
 // перед пользователем хранящимся в переменной insertBefore
@@ -34,7 +34,7 @@ const userToInsert = "Kong";
 const insertBefore = "Jay";
 let indexInsert = users.indexOf(userToInsert);
 let indexBefore = users.indexOf(insertBefore);
-console.log(users.splice(indexBefore, 0, userToInsert));
+let addInArr = users.splice(indexBefore, 0, userToInsert);
 
 console.log(users); //  ["Lux", "Poly", "Kong", "Jay", "Kiwi"]
 
