@@ -9,12 +9,10 @@
 
 // Вызовы функции для проверки работоспособности твоей реализации.
 
-let logItems = function(array) {
-  for (let i = 0; i <= array.length; i++) {
-    if (array[i] !== undefined) {
+const logItems = function(array) {
+  for (let i = 0; i <= array.length - 1; i++) {
       let element = array[i];
       console.log(`${i + 1} - ${element}`);
-    }
   }
 };
 
