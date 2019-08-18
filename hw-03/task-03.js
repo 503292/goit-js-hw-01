@@ -9,14 +9,16 @@
 
 const findBestEmployee = employees => {
   let max = 0;
+  let name;
   const keys = Object.keys(employees);
 
   for (const key of keys) {
     if (max < employees[key]) {
       max = employees[key];
+      name = key;
     }
   }
-  return max;
+  return name;
 };
 
 console.log(
