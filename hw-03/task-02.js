@@ -6,15 +6,16 @@
 
 // Вызовы функции для проверки работоспособности твоей реализации.
 
-const countProps = (obj) => {
-  let total = 0;
-  const keys = Object.keys(obj);
-  for (const key of keys) {
-    total++;
-  }
+// const countProps = (obj) => {
+//   let total = 0;
+//   const keys = Object.keys(obj);
+//   for (const key of keys) {
+//     total++;
+//   }
+//   return total;
+// };
 
-  return total;
-};
+const countProps = (obj) =>Object.keys(obj).length;
 
 console.log(countProps({})); // 0
 
