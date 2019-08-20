@@ -28,10 +28,11 @@ class Car {
     this._price = obj.price;
   }
   static getSpecs(car) {
-    console.log(`maxSpeed = ${car.maxSpeed}, speed = ${car.speed},isOn = ${
-      car.isOn
-    },
-     distance = ${car.distance} и price = ${car.price}`);
+    console.log(
+      `maxSpeed = ${car.maxSpeed}, speed = ${car.speed},isOn = ${
+        car.isOn
+      }, distance = ${car.distance} и price = ${car.price}`
+    );
   }
   get price() {
     return this._price;
@@ -121,6 +122,5 @@ Car.getSpecs(mustang);
 console.log(mustang.price); // 2000
 mustang.price = 4000;
 console.log(mustang.price); // 4000
-
 
 //DONE
