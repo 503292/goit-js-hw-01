@@ -19,10 +19,6 @@ const getSortedUniqueSkills = users => {
     return arr.sort();
   };
 
-
-
-// users.map(user => user.skills);
-
 // console.log(skills);
 
 console.log(getSortedUniqueSkills(users));
