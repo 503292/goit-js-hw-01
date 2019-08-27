@@ -75,7 +75,6 @@ function createQuestProfile({ questions }) {
       labelQuestion.append(inputQuestion, pAnswers);
     }
   }
-
   return container;
 }
 
