@@ -1,6 +1,6 @@
 "use strict";
 
-import questionF from "./task-cw.js";
+import questionF from "./task-07.js/index.js";
 
 //========== підключка до HTML
 const testForm = document.querySelector(".js-test-form");
