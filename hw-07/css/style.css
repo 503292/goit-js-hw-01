@@ -1,0 +1,108 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+::after {
+  box-sizing: inherit;
+}
+
+/* * {
+    outline: 1px solid rgb(241, 100, 100);
+  } */
+
+/*VISUAL-HIDDEN h1, h2 */
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0px;
+  border: 0px;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* CLEAR FIX */
+.clearfix::after {
+  display: table;
+  content: "";
+  clear: both;
+}
+
+/* ================================= */
+
+body {
+  background-image: url(../image/checkered-pattern.jpg);
+  font-family: "Roboto", AdobeInvisFont, MyriadPro-Regular;
+
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+.container {
+  margin: 0 auto;
+}
+.test-form {
+  background-color: #ecf0f1;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.template {
+}
+
+.title {
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+  color: grey;
+}
+.h3-question {
+  margin: 0;
+  padding: 10px 0 10px 30px;
+}
+.ol-question {
+    
+  margin: 0;
+  padding: 0 0 0 25px;
+  counter-reset: my-awesome-counter;
+}
+p {
+  counter-increment: my-awesome-counter;
+}
+p:before {
+  content: counter(my-awesome-counter);
+  margin-right: 5px;
+}
+
+.li-question {
+  list-style: none;
+  color: grey;
+}
+
+.input-question {
+}
+.input-question:checked {
+    background-color: cadetblue;
+}
+
+.btn {
+  margin: 0 210px;
+  border: 2px solid #3f3f3f;
+  padding: 15px;
+}
+.btn:hover,
+.btn:focus {
+  outline: none;
+  background-color: rgb(190, 236, 222);
+}
