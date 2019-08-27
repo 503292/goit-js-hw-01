@@ -67,7 +67,7 @@ function createQuestProfile({ questions }) {
       inputQuestion.classList.add("input-question");
 
       inputQuestion.setAttribute("type", "radio");
-      inputQuestion.setAttribute("name", "quest_" + i);
+      inputQuestion.setAttribute("name", "choice_" + i);
       inputQuestion.setAttribute("value", `${j}`);
 
       // витягуєм одну відповідь для одного inputa
@@ -86,23 +86,54 @@ testForm.addEventListener("submit", handlerSubmitWithData);
 function handlerSubmitWithData(event) {
   event.preventDefault();
 
-  const objectAnsver = {}
+  const objectAnswer = {};
   const formData = new FormData(event.currentTarget);
 
   formData.forEach((value, name) => {
-    objectAnsver[name] = value;
-    });
- console.log(objectAnsver);
+    objectAnswer[name] = value;
+  });
+  // console.log(objectAnswer);
+  validateAnswer(objectAnswer);
+  // console.log(questionF);
 }
 
+function validateAnswer(objectAnswer) {
+  // console.log(questionF.questions[0].answer); // правильна відповідь
+  // console.log(objectAnswer); // відповіді юзера
 
+  // довжина objectAnswer
+  let sizeОbjectAnswer = Object.keys(objectAnswer).length;
+  console.log(sizeОbjectAnswer);
+
+  // перевод обєкта в масив
+  let arrОbjectAnswer = Object.values(objectAnswer);
+  console.log(arrОbjectAnswer);
+
+  const correctAnswer = questionF.questions.map(q => q.answer);
+  console.log(correctAnswer); // правильна відповідь
+
+  let countCorrectAnswer = 0;
+
+  if (sizeОbjectAnswer === correctAnswer.length) {
+    for (let i = 0; i < correctAnswer.length; i++) {
+      if (arrОbjectAnswer[i] == correctAnswer[i]) {
+        countCorrectAnswer++;
+        
+      } else {
+        console.log("brrr");
+      }
+    }
+    alert("правельних відповідей " + countCorrectAnswer);
+    // console.log();
+  }
+  // if(questionF.questions[0].answer === objectAnswer.)
+}
 
 // function handlerSubmit(e) {
 //   e.preventDefault();
 //   const {elements} = e.currentTarget;
 //   console.log(form);
-  
-  
+
 //   const subscription = elements.quest_1.value;
 //   console.log(elements.value);
 //   console.dir(elements);
@@ -113,11 +144,6 @@ function handlerSubmitWithData(event) {
 //   console.log(data);  //херня якась {subscription: undefined}
 // }
 
-
-
-
-
-
 // function quest({ questions }) {
 //   let arrQuestion1 = questions.map(q => q.question);
 //   console.log(arrQuestion1.length);
@@ -125,17 +151,14 @@ function handlerSubmitWithData(event) {
 // }
 // const pro = quest(questionsF);
 
-
-
 // // VALIDATION
-
 
 // for (let i = 0; i < 1; i++) {
 //   console.log(document.querySelector(".ol-question-" + i));
 
 //   for (let j = 0; j < 1; j++) {
 //     console.log(document.querySelector(".li-question-" + j));
-//     console.log(document.querySelector(".quest-" + j));
+//     console.log(document.querySelector(".choise-" + j));
 //   }
 // }
 
@@ -164,19 +187,6 @@ function handlerSubmitWithData(event) {
 // console.log(inp);
 //   }
 // }
-
-// const userAnswer = document.querySelectorAll("label");
-// console.log(userAnswer);
-
-// if(document){
-//      console.log( document.input.classList(value) + checked);
-//   }
-
-// function validateProfile({ questions, answer, choices }) {
-//   // const userAnswers =
-//   //
-//   //   console.log(1);
-//   }
 
 // При сабмите формы проверь на сколько вопросов пользователь ответил верно
 // и выведи (можно под формой) сообщение об успехе или неудаче.
