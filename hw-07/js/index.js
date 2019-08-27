@@ -9,7 +9,6 @@ const profile = createQuestProfile(questionF);
 
 // вставити шаблон перед кнопкою
 testForm.insertBefore(profile, btn);
-
 // console.log(profile);
 
 //========== функція структури шаблона
@@ -85,133 +84,56 @@ testForm.addEventListener("submit", handlerSubmitWithData);
 function handlerSubmitWithData(event) {
   event.preventDefault();
 
-  const objectAnswer = {};
+  const objectAnswer = [];
   const formData = new FormData(event.currentTarget);
 
-  formData.forEach((value, name) => {
-    objectAnswer[name] = value;
+  formData.forEach(value => {
+    objectAnswer.push(value);
   });
-  // console.log(objectAnswer);
+  console.log(objectAnswer);
   countUserAnswer(objectAnswer);
 }
 
 // правильна відповідь з task-cw.js
 const correctAnswer = questionF.questions.map(q => q.answer);
-// console.log(correctAnswer);s
+console.log(correctAnswer);
 
 function countUserAnswer(objectAnswer) {
-  // довжина objectAnswer
-  const sizeОbjectAnswer = Object.keys(objectAnswer).length;
-  console.log(sizeОbjectAnswer);
-
-  // перевод обєкта в масив
-  const arrОbjectAnswer = Object.values(objectAnswer);
-  // console.log(arrОbjectAnswer);
-
   let countCorrectAnswer = 0;
 
-  if (sizeОbjectAnswer === correctAnswer.length) {
+  if (objectAnswer.length === correctAnswer.length) {
     for (let i = 0; i < correctAnswer.length; i++) {
-      if (arrОbjectAnswer[i] == correctAnswer[i]) {
+      if (objectAnswer[i] == correctAnswer[i]) {
         countCorrectAnswer++;
       } else {
-        console.log("index wrong answer " + i);
+        // console.log("index wrong answer " + i);
       }
     }
   } else {
     alert("Заповніть будь ласка всі завдання).");
     return;
   }
-  percentAnswer(countCorrectAnswer);
+  percentAnswer(countCorrectAnswer, objectAnswer);
 }
 
-function percentAnswer(countCorrectAnswer) {
-  let verify = Math.round(100 / correctAnswer.length) * countCorrectAnswer;
+function percentAnswer(countCorrectAnswer, objectAnswer) {
+  let verify = ((100 / correctAnswer.length) * countCorrectAnswer).toFixed(1);
 
-  if(verify >= 80){
+  if (verify >= 80) {
     alert(`Вітаю ви пройшли тест).
-Кількість правельних відповідей - ${countCorrectAnswer} 
-Процентове співвідношення - ${verify} %`
-      );
-  }else {
+Кількість правельних відповідей - ${countCorrectAnswer} з ${objectAnswer.length}
+Процентове співвідношення - ${verify} %`);
+  } else {
     alert(`Нажаль тест провалений (.
-Кількість правельних відповідей - ${countCorrectAnswer} 
-Процентове співвідношення - ${verify} %`
-      );
+Кількість правельних відповідей - ${countCorrectAnswer} з ${objectAnswer.length}
+Процентове співвідношення - ${verify} %`);
   }
-  
 }
 
-// function handlerSubmit(e) {
-//   e.preventDefault();
-//   const {elements} = e.currentTarget;
-//   console.log(form);
+// довжина objectAnswer
+// const sizeОbjectAnswer = Object.keys(objectAnswer).length;
+// console.log(sizeОbjectAnswer);
 
-//   const subscription = elements.quest_1.value;
-//   console.log(elements.value);
-//   console.dir(elements);
-
-//   const data = {
-//     subscription,
-//   }
-//   console.log(data);  //херня якась {subscription: undefined}
-// }
-
-// function quest({ questions }) {
-//   let arrQuestion1 = questions.map(q => q.question);
-//   console.log(arrQuestion1.length);
-//   return arrQuestion1.length;
-// }
-// const pro = quest(questionsF);
-
-// // VALIDATION
-
-// for (let i = 0; i < 1; i++) {
-//   console.log(document.querySelector(".ol-question-" + i));
-
-//   for (let j = 0; j < 1; j++) {
-//     console.log(document.querySelector(".li-question-" + j));
-//     console.log(document.querySelector(".choise-" + j));
-//   }
-// }
-
-// let inp = document.querySelector("li-quest-" + 1);
-// console.log(inp.getAttribute("name"));
-
-// function valid(form) {
-//   // let inp = document.querySelector("input");
-// }
-// btn.addEventListener("click", e => {
-
-//   console.log(e.target);
-// });
-
-// function validate(){
-//   const inp = document.querySelectorAll("input");
-//   console.log(inp.classList("value"));
-// }
-
-// for (let i = 0; i < arrQuestion.length; i++) {
-
-//   for (let j = 0; j < arrChoices[i].length; j++) {
-
-// const inp = document.querySelector("quest-" + j);
-
-// console.log(inp);
-//   }
-// }
-
-// При сабмите формы проверь на сколько вопросов пользователь ответил верно
-// и выведи (можно под формой) сообщение об успехе или неудаче.
-// Успешным прохождение теста считается при 80% или более верных ответов.
-
-// HTML-разметка
-// Начальная разметка в HTML-документе.
-
-/* <form>
-  <button type="submit">Проверить</button>
-</form> */
-
-// Каждый вопрос представлен следующей HTML-разметкой.
-// Текст вопроса и количество вариантов ответов зависит от данных вопроса.
-// Подумай что подставить в атрибуты name и value радиокнопок.
+// перевод обєкта в масив
+// const arrОbjectAnswer = Object.values(objectAnswer);
+// console.log(arrОbjectAnswer);
