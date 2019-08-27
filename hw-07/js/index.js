@@ -16,7 +16,6 @@ testForm.insertBefore(profile, btn);
 function createQuestProfile({ questions }) {
   const arrQuestion = questions.map(q => q.question);
   const arrChoices = questions.map(q => q.choices);
-  // const arrAnswer = questions.map(q => q.answer);
 
   // DIV
   const container = document.createElement("div");
@@ -32,7 +31,7 @@ function createQuestProfile({ questions }) {
 
   // SEC
   const sec = document.createElement("section");
-  sec.classList.add("template");
+  sec.classList.add("section");
   container.append(titleForm, sec);
 
   for (let i = 0; i < arrQuestion.length; i++) {
@@ -93,24 +92,21 @@ function handlerSubmitWithData(event) {
     objectAnswer[name] = value;
   });
   // console.log(objectAnswer);
-  validateAnswer(objectAnswer);
-  // console.log(questionF);
+  countUserAnswer(objectAnswer);
 }
 
-function validateAnswer(objectAnswer) {
-  // console.log(questionF.questions[0].answer); // правильна відповідь
-  // console.log(objectAnswer); // відповіді юзера
+// правильна відповідь з task-cw.js
+const correctAnswer = questionF.questions.map(q => q.answer);
+// console.log(correctAnswer);s
 
+function countUserAnswer(objectAnswer) {
   // довжина objectAnswer
-  let sizeОbjectAnswer = Object.keys(objectAnswer).length;
+  const sizeОbjectAnswer = Object.keys(objectAnswer).length;
   console.log(sizeОbjectAnswer);
 
   // перевод обєкта в масив
-  let arrОbjectAnswer = Object.values(objectAnswer);
-  console.log(arrОbjectAnswer);
-
-  const correctAnswer = questionF.questions.map(q => q.answer);
-  console.log(correctAnswer); // правильна відповідь
+  const arrОbjectAnswer = Object.values(objectAnswer);
+  // console.log(arrОbjectAnswer);
 
   let countCorrectAnswer = 0;
 
@@ -118,15 +114,32 @@ function validateAnswer(objectAnswer) {
     for (let i = 0; i < correctAnswer.length; i++) {
       if (arrОbjectAnswer[i] == correctAnswer[i]) {
         countCorrectAnswer++;
-        
       } else {
-        console.log("brrr");
+        console.log("index wrong answer " + i);
       }
     }
-    alert("правельних відповідей " + countCorrectAnswer);
-    // console.log();
+  } else {
+    alert("Заповніть будь ласка всі завдання).");
+    return;
   }
-  // if(questionF.questions[0].answer === objectAnswer.)
+  percentAnswer(countCorrectAnswer);
+}
+
+function percentAnswer(countCorrectAnswer) {
+  let verify = Math.round(100 / correctAnswer.length) * countCorrectAnswer;
+
+  if(verify >= 80){
+    alert(`Вітаю ви пройшли тест).
+Кількість правельних відповідей - ${countCorrectAnswer} 
+Процентове співвідношення - ${verify} %`
+      );
+  }else {
+    alert(`Нажаль тест провалений (.
+Кількість правельних відповідей - ${countCorrectAnswer} 
+Процентове співвідношення - ${verify} %`
+      );
+  }
+  
 }
 
 // function handlerSubmit(e) {
