@@ -77,8 +77,8 @@ function createQuestProfile({ questions }) {
   }
   return container;
 }
-
-testForm.addEventListener("submit", handlerSubmitWithData);
+const form = document.querySelector(".js-test-form");
+form.addEventListener("submit", handlerSubmitWithData);
 
 function handlerSubmitWithData(event) {
   event.preventDefault();
