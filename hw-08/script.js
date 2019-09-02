@@ -56,16 +56,16 @@ const openModal = e => {
   window.addEventListener("keydown", closeModalKeypress);
 };
 
-// відкрити модельне вікно 
 refs.gallery.addEventListener("click", openModal);
 
+// закрити модальне вікно 
 const closeModal = e => {
   refs.lightbox.classList.remove("is-open");
 
   window.removeEventListener("keydown", closeModalKeypress);
 };
 
-// закрити модальне вікно при кнопці button - "X"
+
 refs.closeBtn.addEventListener("click", closeModal);
 
 // закрити по оверлею
