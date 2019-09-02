@@ -11,32 +11,27 @@ const refs = {
   overlay: document.querySelector(".lightbox__content")
 };
 
-// Шаблон для елемента в галереї
-const createGalleryTemplate = ({ preview, original, description }) => {
-  return `<li class="gallery__item">
-    <a class="gallery__link" href="${original}" >
-      <img
-        class = "gallery__image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-      />
-      <span class="gallery__icon">
-        <i class="material-icons">zoom_out_map</i>
-      </span>
+// Шаблон галереї по даним з файла ./gallery-items.js
+const templateGallery = gallery
+  .map(
+    ({ preview, original, description }) =>
+      `<li class="gallery__item">
+    <a class="gallery__link" href="${original}">
+      <img class="gallery__image" src="${preview}" 
+      data-source="${original}"
+      data-lazy="${preview}"
+      width="340" alt="${description}" />
+      <span class="gallery__icon"><i class="material-icons">zoom_out_map</i></span>
     </a>
-  </li>`;
-};
+  </li>
+`
+  )
+  .join("");
 
-const drawGallery = source => {
-  source.forEach(element => {
-    const elementToDraw = createGalleryTemplate(element);
-    refs.gallery.insertAdjacentHTML("beforeend", elementToDraw);
-  });
-};
+// console.log(templateGallery);
 
-// відмалювати дані з файла gallery-items.js по шаблону
-drawGallery(gallery);
+// Підключка шаблона до HTML 
+refs.gallery.insertAdjacentHTML("beforeend", templateGallery);
 
 // закрити модальне вікно при "Escape"
 const closeModalKeypress = e => {
@@ -45,7 +40,7 @@ const closeModalKeypress = e => {
   }
   closeModal();
 };
-
+// відкрити модельне вікно - реалізація
 const openModal = e => {
   e.preventDefault();
   if (e.target.nodeName !== "IMG") {
@@ -61,7 +56,7 @@ const openModal = e => {
   window.addEventListener("keydown", closeModalKeypress);
 };
 
-// відкрити модельне вікно
+// відкрити модельне вікно 
 refs.gallery.addEventListener("click", openModal);
 
 const closeModal = e => {
@@ -73,7 +68,7 @@ const closeModal = e => {
 // закрити модальне вікно при кнопці button - "X"
 refs.closeBtn.addEventListener("click", closeModal);
 
-//Закрити по оверлею
+// закрити по оверлею
 const closeModalOverlay = e => {
   if (e.target !== e.currentTarget) {
     return;
