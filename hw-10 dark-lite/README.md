@@ -1,1 +1,1 @@
-hw-10 dark-lite
+hw-10 dark / light  THEME
