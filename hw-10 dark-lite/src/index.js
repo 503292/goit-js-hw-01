@@ -1,14 +1,9 @@
 import menu from './menu.json';
 import menuTemplate from './templates/template.hbs';
-
 import './styles.css';
 
 const refs = {
   menuList: document.querySelector('#menu'),
-};
-const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
 };
 
 // console.log(menu);
@@ -20,12 +15,22 @@ const markup = menuTemplate(menu);
 
 refs.menuList.insertAdjacentHTML('beforeend', markup);
 
+// теми для сайта dark / light
+const Theme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
 
-// refs.menuList.insertAdjacentHTML('beforeend', markup);
+console.log(localStorage);
+
+localStorage.setItem('theme', 'lite');
+
+
+// функція для перебору всього меню
 
 // buildMenu(menu);
 
-// функція для перебору всього меню
+
 // function buildMenu(menu) {
 //   const markup = menu.map(dish => menuTemplate(dish)).join('');
 
