@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: sans-serif;
+  flex-direction: column;
+  color: #212121;
+}
+.timer {
+  display: flex;
+  margin: 0 auto;
+}
+
+.value, .label {
+  display: block;
+  text-align: center;
+}
+.value {
+  
+  font-size: 5rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+  background-color: #212121;
+  color: white;
+}
+.field:not(:last-of-type) .value::after {
+  color: #212121;
+  content: ":";
+  position: absolute;
+}
+
