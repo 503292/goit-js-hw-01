@@ -1,40 +1,50 @@
-const colors = [
-  "#FFFFFF",
-  "#2196F3",
-  "#4CAF50",
-  "#FF9800",
-  "#009688",
-  "#795548"
-];
-
-const refs = {
-  start: document.querySelector("[data-action='start']"),
-  stop: document.querySelector("[data-action='stop']"),
-  body: document.querySelector("body")
-};
+// Задание 3
+// Перепиши функцию makeTransaction() так,
+//  чтобы она не использовала callback-функции onSuccess и onError,
+//   а принимала всего один параметр transaction и возвращала промис.
 
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-let doInterval;
+const makeTransaction = transaction => {
+  const delay = randomIntegerFromInterval(200, 500);
 
-const handelStart = e => {
-  doInterval = setInterval(() => {
-    // видає рандомне число з врахуванням довжини масиву
-    let rand = randomIntegerFromInterval(0, colors.length);
-    // console.log(rand);
-    // міняє колір заливки body
-    document.body.style.backgroundColor = colors[rand];
-  }, 1000);
-  refs.start.disabled = true;
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const canProcess = Math.random() > 0.3;
+
+      if (canProcess) {
+        resolve({ id: transaction.id, time: delay });
+      } else {
+        reject(transaction.id);
+      }
+    }, delay);
+  });
 };
 
-const handelStop = e => {
-  clearInterval(doInterval);
-
-  refs.start.disabled = false;
+const logSuccess = ({ id, time }) => {
+  console.log(`Transaction ${id} processed in ${time} ms`);
 };
 
-refs.start.addEventListener("click", handelStart);
-refs.stop.addEventListener("click", handelStop);
+const logError = id => {
+  console.warn(`Error processing transaction ${id}. Please try again later.`);
+};
+/*
+* Должно работать так
+*/
+makeTransaction({ id: 70, amount: 150 })
+  .then(logSuccess)
+  .catch(logError);
+
+makeTransaction({ id: 71, amount: 230 })
+  .then(logSuccess)
+  .catch(logError);
+
+makeTransaction({ id: 72, amount: 75 })
+  .then(logSuccess)
+  .catch(logError);
+
+makeTransaction({ id: 73, amount: 100 })
+  .then(logSuccess)
+  .catch(logError);
