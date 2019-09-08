@@ -44,14 +44,6 @@ function pad(value) {
 
 const timeBirthday = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("Jun 14, 2071"),
-  selectorWrap: "#happy",
+  targetDate: new Date("Jun 14, 2088"),
 });
 
-
-
-// const test = new CountdownTimer({
-//   selector: "#timer-2",
-//   targetDate: new Date("Sep 7, 2019 12:09:00"),
-//   selectorWrap: "#test",
-// });
